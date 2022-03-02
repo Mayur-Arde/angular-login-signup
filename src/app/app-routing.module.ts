@@ -5,9 +5,16 @@ import { LandingComponent } from './components/landing/landing.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { HomeComponent } from './components/home/home.component';
+import {
+  canActivate,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
 
+const redirectToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectToHome = () => redirectLoggedInTo(['home']);
 
-const routes : Routes =[
+const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
@@ -15,25 +22,24 @@ const routes : Routes =[
   },
   {
     path: 'sign-up',
-    component: SignupComponent
+    component: SignupComponent,
+    ...canActivate(redirectToHome)
   },
   {
     path: 'login',
     component: SigninComponent,
+    ...canActivate(redirectToHome)
   },
   {
     path: 'home',
     component: HomeComponent,
+    ...canActivate(redirectToLogin),
   },
-
-]
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports: [RouterModule]
+  imports: [CommonModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,20 +1,24 @@
 <div class="login mat-elevation-z2">
   <h1>Login In</h1>
-  <form [formGroup]="loginForm" class="form">
+  <form [formGroup]="loginForm" class="form" (ngSubmit)="submit()">
     <mat-form-field>
       <input matInput placeholder="Enter Email" formControlName="email" />
-      <mat-error *ngIf="email?.errors?.['required']">Email is required!</mat-error>
+      <mat-error *ngIf="email?.errors?.['required']"
+        >Email is required!</mat-error
+      >
     </mat-form-field>
-    <mat-error *ngIf="email?.errors?.['email']">Email is in incorrect formart!</mat-error>
+    <mat-error *ngIf="email?.errors?.['email']"
+      >Email is in incorrect formart!</mat-error
+    >
     <mat-form-field>
-      <input
-        matInput
-        placeholder="Enter Password"
-        formControlName="password"
-      />
-      <mat-error *ngIf="password?.errors?.['required']">Password is required!</mat-error>
+      <input matInput placeholder="Enter Password" formControlName="password" type="password"/>
+      <mat-error *ngIf="password?.errors?.['required']"
+        >Password is required!</mat-error
+      >
     </mat-form-field>
     <button mat-raised-button color="primary" class="submit_btn">Submit</button>
-</form>
-<span class="already_sign_up">Already have Account? <a routerLink="sign-up">Sign-up</a></span>
+  </form>
+  <span class="already_sign_up"
+    >Already have Account? <a routerLink="../sign-up">Sign-up</a></span
+  >
 </div>
