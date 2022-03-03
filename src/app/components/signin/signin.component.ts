@@ -40,4 +40,8 @@ export class SigninComponent implements OnInit {
       this.router.navigate(['../landing']);
     });
   }
+
+  loginGoogle(){
+    // this.authService.AuthLogin().subscribe
+  }
 }

@@ -1,5 +1,8 @@
 <div class="login mat-elevation-z2">
   <h1>Login In</h1>
+  <button type="button" (click)="loginGoogle()">
+    Log in with Google
+  </button>
   <form [formGroup]="loginForm" class="form" (ngSubmit)="submit()">
     <mat-form-field>
       <input matInput placeholder="Enter Email" formControlName="email" />

@@ -12,10 +12,13 @@ export class AppComponent {
 
   }
 
+  login = true;
+
 
   logout(){
     this.authService.logout().subscribe(()=>{
-      this.router.navigate([''])
+      this.router.navigate(['']);
+      this.login = false;
     })
   }
 }
